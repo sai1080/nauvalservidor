@@ -28,7 +28,7 @@ public class PuertosServlet extends HttpServlet {
     public PuertosServlet() {
         super();
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -36,7 +36,7 @@ public class PuertosServlet extends HttpServlet {
 		processRequest(request,response);
 	}
 	
-	//conectar
+	//conectar a la base de datos
 	private void processRequest(HttpServletRequest request,
 			HttpServletResponse response) {
 		ServletOutputStream out=null;
