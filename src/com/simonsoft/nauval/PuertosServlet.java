@@ -45,17 +45,25 @@ public class PuertosServlet extends HttpServlet {
 			String puertoId=request.getParameter("id");
 			ClubNauticoDAO clubNauticoDAO= new ClubNauticoDAOMysql();
 			Gson gson=new Gson();
-			if( puertoId.equals("all")){
+			if(puertoId == null){
+				out.print("Error: no se ha especificado el parámetro id");
+			} else if( puertoId.equals("all")){
 				List<ClubNautico> puertos=clubNauticoDAO.recuperarClubesNauticos();
 				// transformar puertos a json y utilizar la variable out para construir la respuesta
 				// a enviar al cliente
 				
 				out.print(gson.toJson(puertos));
 			}else{
-				ClubNautico puerto=clubNauticoDAO.recuperaClubNautico(Integer.parseInt(puertoId));
-				// transformar puerto a json y utilizar la variable out para construir la respuesta
-				// a enviar al cliente
-				out.print(gson.toJson(puerto));
+				try{
+					Integer id=Integer.parseInt(puertoId);		
+					ClubNautico puerto=clubNauticoDAO.recuperaClubNautico(id);
+					// transformar puerto a json y utilizar la variable out para construir la respuesta
+					// a enviar al cliente
+					out.print(gson.toJson(puerto));
+				}catch(NumberFormatException ex){
+					out.print("Error: el valor del parámetro id no es un número");
+				}
+			
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

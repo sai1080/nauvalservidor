@@ -44,14 +44,14 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 			while(rs.next()){
 				// Creamos un objeto ClubNautico e inicializamos el valor de sus atributos
 				// a partir del resultset indicando en cada caso el nombre y el tipo de dato de la columna correspondiente
-				ClubNautico clubNautico=new ClubNautico();
-				clubNautico.setId(rs.getInt("id_puerto"));
+				ClubNautico clubNautico=new ClubNautico(rs.getInt("id_puerto"),rs.getString("nombre"),                 );
+				/*clubNautico.setId(rs.getInt("id_puerto"));
 				clubNautico.setNombre(rs.getString("nombre"));
 				clubNautico.setDireccion(rs.getString("direccion"));
 				clubNautico.setTelefono(rs.getString("telefono"));
 				clubNautico.setEmail(rs.getString("email"));
 			    clubNautico.setLongitud(0d);
-			    clubNautico.setLatitud(0d);
+			    clubNautico.setLatitud(0d);*/
 				//	clubNautico.setLongitud(rs.getDouble("lon"));
 				//	clubNautico.setLatitud(rs.getDouble("lat"));
 				clubNautico.setWeb(rs.getString("URL"));
@@ -98,7 +98,8 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 		// en una objeto de tipo List
 		List<ClubNautico> puertos = clubNauticoDAOMysql.recuperarClubesNauticos();
 		for (ClubNautico clubNautico : puertos) {
-			System.out.println(clubNautico.getId());
+			System.out.println(clubNautico.toString());
+			/*System.out.println(clubNautico.getId());
 			System.out.println(clubNautico.getNombre());
 			System.out.println(clubNautico.getDireccion());
 			System.out.println("-------");
@@ -106,12 +107,12 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 			System.out.println(clubNautico.getEmail());
 			System.out.println(clubNautico.getWeb());
 			System.out.println(clubNautico.getLatitud());
-			System.out.println(clubNautico.getLongitud());
+			System.out.println(clubNautico.getLongitud());*/
 			System.out.println("--------");
 		}
 		ClubNautico c= clubNauticoDAOMysql.recuperaClubNautico(3);
-		System.out.println(c.getId());
-		System.out.println(c.getNombre());
+		System.out.println(c.getId(),"\n" + c.getNombre(), + "\n");
+	//	System.out.println(c.getNombre());
 		System.out.println(c.getDireccion());
 		System.out.println("-------");
 		System.out.println(c.getTelefono());

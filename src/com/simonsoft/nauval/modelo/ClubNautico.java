@@ -76,6 +76,7 @@ public class ClubNautico {
 	
 	@Override
 	public String toString() {
+		
 		return nombre;
 	}
 
