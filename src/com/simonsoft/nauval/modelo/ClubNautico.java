@@ -9,6 +9,23 @@ public class ClubNautico {
 	private String web;
 	private Double longitud;
 	private Double latitud;
+	
+public ClubNautico(){
+		
+	}
+	
+	public ClubNautico(Integer id, String nombre, String direccion,
+			String telefono, String email, String web, Double longitud,
+			Double latitud) {
+		this.id = id;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.email = email;
+		this.web = web;
+		this.longitud = longitud;
+		this.latitud = latitud;
+	}
 
 	public Integer getId() {
 		return id;

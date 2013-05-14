@@ -44,7 +44,9 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 			while(rs.next()){
 				// Creamos un objeto ClubNautico e inicializamos el valor de sus atributos
 				// a partir del resultset indicando en cada caso el nombre y el tipo de dato de la columna correspondiente
-				ClubNautico clubNautico=new ClubNautico(rs.getInt("id_puerto"),rs.getString("nombre"),                 );
+				ClubNautico clubNautico=new ClubNautico(rs.getInt("id_puerto"),rs.getString("nombre"),
+				rs.getString("direccion"),rs.getString("telefono"),rs.getString("email"), rs.getString("URL"),
+				rs.getDouble("lon"),rs.getDouble("lat"));
 				/*clubNautico.setId(rs.getInt("id_puerto"));
 				clubNautico.setNombre(rs.getString("nombre"));
 				clubNautico.setDireccion(rs.getString("direccion"));
@@ -54,7 +56,7 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 			    clubNautico.setLatitud(0d);*/
 				//	clubNautico.setLongitud(rs.getDouble("lon"));
 				//	clubNautico.setLatitud(rs.getDouble("lat"));
-				clubNautico.setWeb(rs.getString("URL"));
+				//clubNautico.setWeb(rs.getString("URL"));
 				// Vamos añadiendo en cada iteración un nuevo elemento a la lista
 				resultado.add(clubNautico);
 			}
@@ -111,8 +113,9 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 			System.out.println("--------");
 		}
 		ClubNautico c= clubNauticoDAOMysql.recuperaClubNautico(3);
-		System.out.println(c.getId(),"\n" + c.getNombre(), + "\n");
-	//	System.out.println(c.getNombre());
+		System.out.println(c.getId(),"\n" + c.getNombre(), "\n" + c.getDireccion(), c.getTelefono(), "\n" +
+		c.getEmail(), "\n" + c.getWeb(), "\n" + c.getLatitud(), "\n" + c.getLongitud() );
+	/*	System.out.println(c.getNombre());
 		System.out.println(c.getDireccion());
 		System.out.println("-------");
 		System.out.println(c.getTelefono());
@@ -121,6 +124,7 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 		System.out.println(c.getLatitud());
 		System.out.println(c.getLongitud());
 		System.out.println("--------");
+		*/
 	}
 
 }
