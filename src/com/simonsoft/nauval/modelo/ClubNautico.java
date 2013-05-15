@@ -1,5 +1,11 @@
 package com.simonsoft.nauval.modelo;
 
+
+/**
+ * Clase del modelo de dominio que representa la entidad ClubNautico
+ * @author Simón
+ *
+ */
 public class ClubNautico {
 	private Integer id;
 	private String nombre;
@@ -27,10 +33,21 @@ public ClubNautico(){
 		this.latitud = latitud;
 	}
 
+	
+	/**
+	 * Recupera la id del club nautico
+	 * 
+	 * @return
+	 * La id del club nautico
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * Establece el valor del atributo id
+	 * @param id El nuevo valor
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
