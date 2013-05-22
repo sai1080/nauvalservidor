@@ -47,12 +47,14 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 				// Creamos un objeto ClubNautico e inicializamos el valor de sus atributos
 				// a partir del resultset indicando en cada caso el nombre y el tipo de dato de la columna correspondiente
 				ClubNautico clubNautico=new ClubNautico(rs.getInt("id_puerto"),rs.getString("nombre"),
-				rs.getString("direccion"),rs.getString("telefono"),rs.getString("email"), rs.getString("URL"),null,null
-				/*rs.getDouble("lon"),rs.getDouble("lat")*/);
+				rs.getString("direccion"),rs.getString("telefono"),rs.getString("email"), rs.getString("URL"),
+				rs.getDouble("lon"),rs.getDouble("lat"));
 				
 				// Vamos añadiendo en cada iteración un nuevo elemento a la lista
 				resultado.add(clubNautico);
 			}
+			rs.close();
+			st.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,11 +74,11 @@ public class ClubNauticoDAOMysql implements ClubNauticoDAO {
 			clubNautico.setDireccion(rs.getString("direccion"));
 			clubNautico.setTelefono(rs.getString("telefono"));
 			clubNautico.setEmail(rs.getString("email"));
-			clubNautico.setWeb(rs.getString("URL"));
-			  clubNautico.setLongitud(0d);
-			    clubNautico.setLatitud(0d);
-		//	clubNautico.setLongitud(rs.getDouble("lon"));
-		//	clubNautico.setLatitud(rs.getDouble("lat"));
+			clubNautico.setWeb(rs.getString("URL"));		
+			clubNautico.setLongitud(rs.getDouble("lon"));
+			clubNautico.setLatitud(rs.getDouble("lat"));
+			rs.close();
+			st.close();
 			return clubNautico;
 			
 		} catch (SQLException e) {
